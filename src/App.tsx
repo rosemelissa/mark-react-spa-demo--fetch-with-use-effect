@@ -10,23 +10,23 @@ interface Joke {
 function App() {
   const [joke, setJoke] = useState<Joke>();
 
-  useEffect(() => {
-    const fetchJoke = async () => {
-      const response = await fetch(
-        "https://jokestemp.neillbogie.repl.co/jokes/general/random"
-      );
-      const jsonBody: Joke[] = await response.json();
-      setJoke(jsonBody[0]);
-    };
-
-    fetchJoke();
-  }, []);
-
   // useEffect(() => {
-  //   fetch("https://jokestemp.neillbogie.repl.co/jokes/general/random")
-  //     .then(response => response.json())
-  //     .then((jsonBody: Joke[]) => setJoke(jsonBody[0]));
-  // }, [])
+  //   const fetchJoke = async () => {
+  //     const response = await fetch(
+  //       "https://jokestemp.neillbogie.repl.co/jokes/general/random"
+  //     );
+  //     const jsonBody: Joke[] = await response.json();
+  //     setJoke(jsonBody[0]);
+  //   };
+
+  //   fetchJoke();
+  // }, []);
+
+  useEffect(() => {
+    fetch("https://jokestemp.neillbogie.repl.co/jokes/general/random")
+      .then(response => response.json())
+      .then((jsonBody: Joke[]) => setJoke(jsonBody[0]));
+  }, [])
 
   return (
     <>
